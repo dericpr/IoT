@@ -4,9 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 
-var acme = require('./routes/acme');
 var app = express();
 
+var acme = require('./routes/acme.js');
+acme.start();
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
