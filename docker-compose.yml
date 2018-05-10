@@ -2,11 +2,9 @@ version: '3.5'
 
 services:
 
-  sample-app:
-    container_name: app_simulation
-    build:
-      context: .
-      dockerfile: Dockerfile
+  simulator:
+    container_name: simulator 
+    build: './simulator'
     volumes:
       - '.:/usr/src/app'
       - '/usr/src/app/node_modules'
@@ -16,9 +14,10 @@ services:
       - NODE_ENV=development
     links:
       - mongodb
+      - dashboard
     depends_on:
       - mongodb
-
+      - dashboard
   mongodb:
     image: mongo:latest
     container_name: "mongodb"
@@ -30,3 +29,15 @@ services:
     ports:
       - 27017:27017
     command: mongod --smallfiles --logpath=/dev/null # -- run quiet
+
+  dashboard:
+    container_name: "dashboard"
+    build: './dashboard'
+    volumes:
+      - '.:/usr/src/dashboard'
+      - '/usr/src/dashboard/node_modules'
+    ports:
+      - '4000:4000'
+    environment:
+      - NODE_ENV=development
+    command: node index.js

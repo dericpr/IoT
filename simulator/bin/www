@@ -7,7 +7,6 @@
 var app = require('../app');
 var debug = require('debug')('mean-app:server');
 var http = require('http');
-
 /**
  * Get port from environment and store in Express.
  */
@@ -28,6 +27,17 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+
+//client.js
+var io = require('socket.io-client');
+var socket = io.connect('http://dashboard:4000', {reconnect: true});
+
+// Add a connect listener
+socket.on('connect', function (socket) {
+	    console.log('Connected!');
+});
+socket.emit('CH01', 'me', 'test msg')
 
 /**
  * Normalize a port into a number, string, or false.
