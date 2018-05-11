@@ -92,4 +92,4 @@ open a browser and go to http://localhost:4000/devices
 
 Use the simulator to add / delete / edit device entries.  Once the change is completed the Dashboard will fadeout and fade back in with the new data.
 
-* [Video of Applicaiton in Action](https://www.youtube.com/watch?v=cARXy2WtXVI&feature=youtu.be) - Ignore the last 15 seconds of frantic mouse clicking to stop the recording :)
+* [Video of Application in Action](https://www.youtube.com/watch?v=cARXy2WtXVI&feature=youtu.be) - Ignore the last 15 seconds of frantic mouse clicking to stop the recording :)
